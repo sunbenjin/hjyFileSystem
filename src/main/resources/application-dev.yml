@@ -1,0 +1,81 @@
+spring:
+  #开发环境配置
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://1.0.4.102:3306/lenos?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+  mvc:
+    view:
+      prefix: /templates
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8900
+uploader:
+  #开发环境配置   E:\software\ftpserver\file-transform-temp\ffmpeg
+  basePath: C:\\tourism\\tourismfileService\\
+  ffmpegpath:  C:\\tourism\\tourismfileService\\ffmpeg.exe
+  mencoderpath:  C:\\tourism\\tourismfileService\\mencoder.exe
+  avifilepath:  C:\\tourism\\tourismfileService\\temp.avi
+  displayPath: ${localaddress}:${server.port}/image/
+  converMp4: true
+  converType: asx,asf,mpg,wmv,3gp,mov,avi,wmv9,rm,rmvb
+  tempPath: C:\\tourism\\tourismfileService\\temp
+  ftpserver:
+    port: 2122
+    name: admin
+    password: admin
+    #homeDirectory: C:\\tourism\\tourismfileService
+    ##开发环境配置
+    homeDirectory: C:/tourism/tourismfileService/
+    path: ftp://admin:admin@127.0.0.1:2122/
+beetl:
+  resource-auto-check: true       #热加载beetl模板，开发时候用
+  delimiter-statement-start: \@
+  delimiter-statement-end:
+beetlsql:
+  enabled: false
+
+accessurl: http://1.0.7.115:8080,http://1.0.7.115:80,http://1.0.7.115:8900
+localaddress: http://1.0.7.115
+
+
+
+
+
+
